@@ -1,0 +1,27 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "10"        # 11 = Windows 11 Pro, 10 = Windows 10 Pro, 11l/10l = LTSC, tiny11/tiny10 = lightweight
+      RAM_SIZE: "8G"
+      CPU_CORES: "3"
+      DISK_SIZE: "32G"
+      USERNAME: "Docker"
+      PASSWORD: "admin"    # change this if you plan to use RDP
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 3389:3389/tcp
+      - 3389:3389/udp
+    volumes:
+      - windows-data:/storage
+    restart: always
+    stop_grace_period: 2m
+
+volumes:
+  windows-data:

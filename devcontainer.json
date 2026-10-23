@@ -1,0 +1,25 @@
+{
+  "name": "Windows",
+  "dockerComposeFile": "codespaces.yml",
+  "service": "windows",
+  "workspaceFolder": "/storage",
+
+  // Windows needs real CPU/RAM/disk, so ask Codespaces for at least a 4-core machine
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "32gb"
+  },
+
+  // Port 8006 is the browser-based Windows screen; it opens automatically
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Windows (web viewer)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "silent"
+  }
+}
